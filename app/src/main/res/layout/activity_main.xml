@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTitle"
         android:layout_marginHorizontal="@dimen/desc_padding"
-        android:text="Chụp ảnh"
+        android:text="@string/Camera"
         android:textSize="@dimen/text_size_h4" />
 
     <Button
@@ -34,7 +34,7 @@
         android:layout_below="@id/tvTitle"
         android:layout_marginHorizontal="@dimen/desc_padding"
         android:layout_toRightOf="@+id/btnCamera"
-        android:text="Chọn ảnh"
+        android:text="@string/Gallery"
         android:textSize="@dimen/text_size_h4" />
 
 </RelativeLayout>

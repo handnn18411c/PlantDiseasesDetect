@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">PlantDiseasesDetect</string>
+
+<!-- Button Name -->
+    <string name="CaptureAgain">Chụp lại</string>
+    <string name="UseImage">Sử dụng</string>
+    <string name="Camera">Chụp ảnh</string>
+    <string name="Gallery">Chọn ảnh</string>
+
+<!-- Activity Name -->
+    <string name="ActivityPlantDiseaseDetail">Plant Disease Detail</string>
+    <string name="ActivityPlantDiseaseDetect">Plant Disease Detect</string>
+    <string name="ActivityHome">Home</string>
+    <string name="ActivityCamera">Camera</string>
+    <string name="ActivityImagePreview">ImagePreview</string>
 </resources>
