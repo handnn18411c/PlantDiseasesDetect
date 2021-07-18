@@ -3,6 +3,14 @@ package nhathando.com.plantdiseasesdetect.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -25,6 +33,8 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.OnClick;
 import nhathando.com.plantdiseasesdetect.R;
+import nhathando.com.plantdiseasesdetect.views.ImagePreview.ImagePreviewActivity;
+
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.ImagePreview.ImagePreviewActivity;
 
@@ -34,6 +44,9 @@ public class HomeActivity extends BaseActivity {
     private Uri imageUri;
     private Bundle bundle;
 
+    @BindView(R.id.btnGallery)
+    Button btnGallery;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -42,11 +55,6 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void createView() {
         addView();
-        addEvents();
-    }
-
-    private void addEvents() {
-
     }
 
     private void addView() {
@@ -65,6 +73,14 @@ public class HomeActivity extends BaseActivity {
         startActivityForResult(intent, Constant.REQUEST_IMAGE_CAPTURE);
     }
 
+    @OnClick(R.id.btnGallery)
+    public void openGallery() {
+        bundle.putString(Constant.KEY_CAMERA_OR_GALLERY, getResources().getString(R.string.ActivityGallery));
+        Intent i = new Intent(
+                Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, Constant.PICK_IMAGE);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -79,6 +95,15 @@ public class HomeActivity extends BaseActivity {
                             e.printStackTrace();
                         }
                     }
+                break;
+            case Constant.PICK_IMAGE:
+                Uri selectedImage = data.getData();
+                Log.d("aaaaaa" , selectedImage.toString());
+                bundle.putParcelable(Constant.IMAGE_CAPTURE_URI , selectedImage);
+                showActivity(ImagePreviewActivity.class ,bundle);
+                break;
+
         }
     }
+
 }

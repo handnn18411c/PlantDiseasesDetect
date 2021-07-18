@@ -3,6 +3,18 @@ package nhathando.com.plantdiseasesdetect.views.ImagePreview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+
+import butterknife.BindView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,9 +35,10 @@ public class ImagePreviewActivity extends BaseActivity {
 
     private ImagePreviewViewModel imagePreviewViewModel;
     private String function;
+    private Bundle bundle;
 
     @BindView(R.id.imgPlant)
-    ImageView imgPlan;
+    ImageView imgPlant;
     @BindView(R.id.btnAgain)
     Button btnAgain;
 
@@ -37,6 +50,21 @@ public class ImagePreviewActivity extends BaseActivity {
     @Override
     protected void createView() {
         initView();
+
+//        if(bundleFromGallery != null ) {
+//            Uri imagePath = bundleFromGallery.getParcelable(Constant.IMAGE_CAPTURE_URI) ;
+//            if(imagePath != null ) {
+//                Bitmap bitmap= null;
+//                try {
+//                    bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imagePath));
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//                imgPlant.setImageBitmap(bitmap);
+//                Log.d("aaaaaa" , imagePath.toString());
+//            }
+//            else Log.d("aaaaaa" , "failedd" ) ;
+//        }
     }
 
     private void initView() {
@@ -44,7 +72,7 @@ public class ImagePreviewActivity extends BaseActivity {
         Bundle bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
         if (bundle != null) {
             Uri uri = bundle.getParcelable(Constant.IMAGE_CAPTURE_URI);
-            imgPlan.setImageURI(uri);
+            imgPlant.setImageURI(uri);
             String function = bundle.getString(Constant.KEY_CAMERA_OR_GALLERY);
             String cameraActivity = getResources().getString(R.string.ActivityCamera);
             if(cameraActivity.equals(function)) {
