@@ -1,0 +1,28 @@
+package nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetect;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.os.Bundle;
+
+import nhathando.com.plantdiseasesdetect.R;
+import nhathando.com.plantdiseasesdetect.views.BaseActivity;
+
+public class PlantDiseasesDetectActivity extends BaseActivity {
+
+    private PlantDiseasesDetectViewModel plantDiseasesDetectViewModel;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_plant_diseases_detect;
+    }
+
+    @Override
+    protected void createView() {
+        initView();
+    }
+
+    private void initView() {
+        plantDiseasesDetectViewModel = new ViewModelProvider(this).get(PlantDiseasesDetectViewModel.class);
+    }
+}

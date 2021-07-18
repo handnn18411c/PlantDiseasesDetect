@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".views.HomeActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/icon_size_h0"
+        android:text="Plant Diseases Detect"
+        android:textSize="@dimen/icon_size_h4"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginHorizontal="@dimen/desc_padding"
+        android:text="Chụp ảnh"
+        android:textSize="@dimen/text_size_h4" />
+
+    <Button
+        android:id="@+id/btnGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginHorizontal="@dimen/desc_padding"
+        android:layout_toRightOf="@+id/btnCamera"
+        android:text="Chọn ảnh"
+        android:textSize="@dimen/text_size_h4" />
+
+</RelativeLayout>
