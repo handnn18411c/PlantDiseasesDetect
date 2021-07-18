@@ -15,9 +15,12 @@
         android:layout_weight="9">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/imgPlant"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/ic_launcher_background" />
     </LinearLayout>
     <!-- Button Area -->
@@ -27,18 +30,20 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/btnAgain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/spacing_large"
             android:text="@string/CaptureAgain" />
 
         <Button
+            android:id="@+id/btnUseImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/spacing_large"
             android:text="@string/UseImage" />
     </RelativeLayout>
