@@ -1,20 +1,27 @@
 package nhathando.com.plantdiseasesdetect.views;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
+import nhathando.com.plantdiseasesdetect.event.PDDActivityResult;
 import nhathando.com.plantdiseasesdetect.util.Constant;
+import nhathando.com.plantdiseasesdetect.views.ImagePreview.ImagePreviewActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         createView();
@@ -65,4 +72,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtra(Constant.KEY_EXTRA, bundle);
         startActivity(intent);
     }
+
 }

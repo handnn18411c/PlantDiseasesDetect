@@ -13,4 +13,5 @@
     <string name="ActivityHome">Home</string>
     <string name="ActivityCamera">Camera</string>
     <string name="ActivityImagePreview">ImagePreview</string>
+    <string name="ActivityGallery">Gallery</string>
 </resources>
