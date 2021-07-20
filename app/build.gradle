@@ -53,4 +53,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.14.4'
     implementation "com.squareup.okhttp3:okhttp-urlconnection:3.0.0-RC1"
 
+    // crop image
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
 }
