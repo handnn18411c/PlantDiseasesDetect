@@ -25,6 +25,7 @@ public class CameraActivity extends BaseActivity {
 
     private void initView() {
         //TODO
+
     }
 
     @OnClick(R.id.btnCamera)

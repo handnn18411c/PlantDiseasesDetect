@@ -48,7 +48,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/spacing_large"
-            android:text="@string/CaptureAgain" />
+            android:text="@string/Back" />
 
         <Button
             android:id="@+id/btnUseImage"
