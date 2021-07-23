@@ -12,4 +12,6 @@ public class ImagePreviewViewModel extends AndroidViewModel {
     public ImagePreviewViewModel(@NonNull @NotNull Application application) {
         super(application);
     }
+
+    
 }

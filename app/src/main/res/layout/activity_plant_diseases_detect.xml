@@ -4,12 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.PlantDiseasesDetect.PlantDiseasesDetectActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ActivityPlantDiseaseDetect"
-        android:textSize="@dimen/text_size_h1"/>
+    <!-- Upper bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/sunshade">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="DEMETER"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+    </LinearLayout>
+    <!-- Detect Result -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/icon_size_h1"
+            android:layout_height="@dimen/icon_size_h1"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/spacing_large"
+            android:background="@drawable/circle_background"
+            android:src="@drawable/ic_baseline_check_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/spacing_large"
+            android:text="Đã phát hiện bệnh"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Kết quả"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <!--        txtKetqua-->
+        <TextView
+            android:id="@+id/txtKetqua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/icon_size_h2"
+            android:layout_marginVertical="@dimen/spacing_large"
+            android:background="@drawable/border_edittext"
+            android:backgroundTint="@color/lightorange"
+            android:gravity="center"
+            android:padding="@dimen/spacing_medium"
+            android:text="BỆNH RỆP SÁP"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginVertical="@dimen/spacing_large"
+            android:text="Độ chính xác"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <!--        txtDochinhxac-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/icon_size_h2"
+            android:layout_marginVertical="@dimen/spacing_large"
+            android:background="@drawable/border_edittext"
+            android:backgroundTint="@color/lightorange"
+            android:gravity="center"
+            android:padding="@dimen/spacing_small"
+            android:text="85%"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <!--        BtnThongtinbenh-->
+        <Button
+            android:id="@+id/btnThongtinbenh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/border_button"
+            android:backgroundTint="@color/sunshade"
+            android:onClick="switchActivity"
+            android:padding="@dimen/spacing_medium"
+            android:text="THÔNG TIN BỆNH"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+    </LinearLayout>
 
 </LinearLayout>

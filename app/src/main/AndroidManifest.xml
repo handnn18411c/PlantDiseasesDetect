@@ -5,8 +5,10 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
 
@@ -16,7 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PlantDiseasesDetect">
+        android:theme="@style/Theme.Design.Light.NoActionBar">
         <!--Provide  -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -28,16 +30,12 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
         <!-- Activities -->
-        <activity android:name=".views.PlantDiseasesDetail.PlantDiseaseDetailActivity"></activity>
+        <activity android:name=".views.PlantDiseasesDetail.PlantDiseaseDetailActivity" />
         <activity android:name=".views.PlantDiseasesDetect.PlantDiseasesDetectActivity" />
         <activity android:name=".views.ImagePreview.ImagePreviewActivity" />
         <activity android:name=".views.Camera.CameraActivity" />
         <activity android:name=".views.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
