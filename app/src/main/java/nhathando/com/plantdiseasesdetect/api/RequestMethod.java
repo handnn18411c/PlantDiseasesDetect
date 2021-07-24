@@ -19,7 +19,7 @@ public interface RequestMethod {
 
     @Multipart
     @POST("device/facerecognize")
-    Call<Face> postFace(@Part MultipartBody.Part selectedFile);
+    Call<List<Face>> postFace(@Part MultipartBody.Part selectedFile);
 
 
 }

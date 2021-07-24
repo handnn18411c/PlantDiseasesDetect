@@ -26,40 +26,34 @@ import retrofit2.Response;
 
 public class ImagePreviewViewModel extends AndroidViewModel {
 
-
+    private static final String TAG = ImagePreviewViewModel.class.getSimpleName();
 
     public ImagePreviewViewModel(@NonNull @NotNull Application application) {
         super(application);
 
     }
+
     public void getFaceRecognize(File selectedImage) {
-
-
         // create multipart
-        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedImage);
-        Log.d("aaaaaa" , selectedImage.getName()) ;
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), selectedImage);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", selectedImage.getName(), requestFile);
-        RequestMethod requestMethod = RetrofitObject.getClient(Constant.BASE_URL) .create(RequestMethod.class);
-        Call<Face> callback = requestMethod.postFace(body);
+        RequestMethod requestMethod = RetrofitObject.getClient(Constant.BASE_URL).create(RequestMethod.class);
+        Call<List<Face>> callback = requestMethod.postFace(body);
 
-        callback.enqueue(new Callback<Face>() {
+        callback.enqueue(new Callback<List<Face>>() {
             @Override
-            public void onResponse(Call<Face> call, Response<Face> response) {
-                Log.d("aaaaaa" , "Sucess") ;
-                if(response.body()!= null)
-                Log.d("aaaaaa" , response.body().getName()) ;
-                else  Log.d("aaaaaa" , "Nothing") ;
-
+            public void onResponse(Call<List<Face>> call, Response<List<Face>> response) {
+                List<Face> faceRespone = response.body();
+                if(faceRespone != null) {
+                    Log.d("FACEX", faceRespone + "");
+                }
             }
+
             @Override
-            public void onFailure(Call<Face> call, Throwable t) {
-                Log.d("aaaaaa" , "Failed") ;
+            public void onFailure(Call<List<Face>> call, Throwable t) {
+                Log.d("FACEXX", t + "");
             }
         });
 
-
     }
-
-
-
 }

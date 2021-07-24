@@ -5,11 +5,13 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
-<!--    Internet Permission-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--    Internet Permission-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +19,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PlantDiseasesDetect">
+        android:theme="@style/Theme.PlantDiseasesDetect"
+        android:usesCleartextTraffic="true">
         <!--Provide  -->
         <provider
             android:name="androidx.core.content.FileProvider"
