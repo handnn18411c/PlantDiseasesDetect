@@ -8,7 +8,9 @@ public class Constant {
     public static final int PICK_IMAGE = 2 ;
     public static final String IMAGE_CAPTURE_URI = "image_uri";
     public static final String KEY_CAMERA_OR_GALLERY = "key_function";
-    public static final String BASE_URL = "http://hraidev.gbsmarter.com:5003/";
+    public static final String TEST_URL = "http://hraidev.gbsmarter.com:5003/";
+    public static final String BASE_URL = "http://hraidev.gbsmarter.com:5059/";
+    public static final String IMAGE_BITMAP = "image_bitmap";
 
 
 

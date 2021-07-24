@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileUtils;
+import android.os.Parcelable;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
@@ -47,6 +48,7 @@ import lombok.SneakyThrows;
 import nhathando.com.plantdiseasesdetect.R;
 import nhathando.com.plantdiseasesdetect.api.RetrofitObject;
 import nhathando.com.plantdiseasesdetect.models.Face;
+import nhathando.com.plantdiseasesdetect.models.PlantDiseases;
 import nhathando.com.plantdiseasesdetect.util.AppUtil;
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.BaseActivity;
@@ -94,21 +96,21 @@ public class ImagePreviewActivity extends BaseActivity {
 
     @OnClick(R.id.btnAgain)
     public void again() {
-        finishAffinity();
+        finish();
     }
 
     @OnClick(R.id.btnUseImage)
     public void sendToServer() {
         Bitmap croppedImage = imgPlant.getCroppedImage();
-        File selectedImage = AppUtil.bitmapToFile(this, croppedImage, "plant.png");
+        Bitmap bitmapResize = AppUtil.getResizedBitmap(croppedImage, 300, 300);
+//        File selectedImage = AppUtil.bitmapToFile(this, croppedImage, "plant.png");
         // Two line below using for test if image crop convert to file success
         // We will modify to connect API later
-        Log.d("aaaaaaaa" , selectedImage.getAbsolutePath());
-        Bitmap bitmap = BitmapFactory.decodeFile(selectedImage.getAbsolutePath());
-        imgPlant.setImageBitmap(bitmap);
-        imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
-        imagePreviewViewModel.getFaceRecognize(selectedImage);
-        showActivity(PlantDiseasesDetectActivity.class);
+//        imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
+//        imagePreviewViewModel.getFaceRecognize(selectedImage);
+//        imagePreviewViewModel.getPlantDisease(selectedImage);
+        bundle.putParcelable(Constant.IMAGE_BITMAP, bitmapResize);
+        showActivity(PlantDiseasesDetectActivity.class, bundle);
     }
 
 
