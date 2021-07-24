@@ -24,6 +24,7 @@ public class AppUtil {
             // Get the directory for the app's private pictures directory.
             file = new File(context.getExternalFilesDir(
                     Environment.DIRECTORY_DCIM), fileNameToSave);
+        //    file = new File(Environment.getExternalStorageDirectory() + File.separator + fileNameToSave);
             int quality = 0;
             //Convert bitmap to byte array
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
