@@ -46,6 +46,7 @@ import nhathando.com.plantdiseasesdetect.R;
 import nhathando.com.plantdiseasesdetect.util.AppUtil;
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.BaseActivity;
+import nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetect.PlantDiseasesDetectActivity;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -77,7 +78,7 @@ public class ImagePreviewActivity extends BaseActivity {
 
     private void initView() {
         imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
-        Bundle bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
+        bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
         if (bundle != null) {
             Uri uri = bundle.getParcelable(Constant.IMAGE_CAPTURE_URI);
             imgPlant.setImageUriAsync(uri);
@@ -97,6 +98,7 @@ public class ImagePreviewActivity extends BaseActivity {
         // We will modify to connect API later
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
         imgPlant.setImageBitmap(bitmap);
+        showActivity(PlantDiseasesDetectActivity.class);
     }
 
 }

@@ -35,7 +35,11 @@
         <activity android:name=".views.ImagePreview.ImagePreviewActivity" />
         <activity android:name=".views.Camera.CameraActivity" />
         <activity android:name=".views.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
