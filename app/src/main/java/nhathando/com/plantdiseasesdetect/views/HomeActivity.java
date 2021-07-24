@@ -1,9 +1,13 @@
 package nhathando.com.plantdiseasesdetect.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,11 +28,17 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,9 +54,6 @@ public class HomeActivity extends BaseActivity {
     private Uri imageUri;
     private Bundle bundle;
 
-    @BindView(R.id.btnGallery)
-    Button btnGallery;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -55,10 +62,28 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void createView() {
         addView();
+        checkPermission();
     }
 
     private void addView() {
         bundle = new Bundle();
+        /*set Slider Show*/
+        ImageSlider imageSlider = findViewById(R.id.slider);
+        List<SlideModel> slideModels = new ArrayList<SlideModel>();
+        slideModels.add(new SlideModel(R.drawable.caphe1, null));
+        slideModels.add(new SlideModel(R.drawable.caphe2, null));
+        slideModels.add(new SlideModel(R.drawable.caphe3, null));
+        slideModels.add(new SlideModel(R.drawable.caphe4, null));
+        imageSlider.setImageList(slideModels, ScaleTypes.CENTER_CROP);
+    }
+
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(
+                HomeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{
+                    Manifest.permission.CAMERA
+            }, Constant.REQUEST_IMAGE_CAPTURE);
+        }
     }
 
     @OnClick(R.id.btnCamera)
@@ -98,9 +123,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case Constant.PICK_IMAGE:
                 Uri selectedImage = data.getData();
-                Log.d("aaaaaa" , selectedImage.toString());
-                bundle.putParcelable(Constant.IMAGE_CAPTURE_URI , selectedImage);
-                showActivity(ImagePreviewActivity.class ,bundle);
+                Log.d("aaaaaa", selectedImage.toString());
+                bundle.putParcelable(Constant.IMAGE_CAPTURE_URI, selectedImage);
+                showActivity(ImagePreviewActivity.class, bundle);
                 break;
 
         }

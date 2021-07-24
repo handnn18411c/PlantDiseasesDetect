@@ -55,5 +55,8 @@ dependencies {
 
     // crop image
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    //  Image Slider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
 
 }
