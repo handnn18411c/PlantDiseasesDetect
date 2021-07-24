@@ -2,6 +2,7 @@ package nhathando.com.plantdiseasesdetect.views.ImagePreview;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
@@ -42,7 +43,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import lombok.SneakyThrows;
 import nhathando.com.plantdiseasesdetect.R;
+import nhathando.com.plantdiseasesdetect.api.RetrofitObject;
+import nhathando.com.plantdiseasesdetect.models.Face;
 import nhathando.com.plantdiseasesdetect.util.AppUtil;
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.BaseActivity;
@@ -51,6 +55,9 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ImagePreviewActivity extends BaseActivity {
     private static final String TAG = ImagePreviewActivity.class.getSimpleName();
@@ -93,12 +100,17 @@ public class ImagePreviewActivity extends BaseActivity {
     @OnClick(R.id.btnUseImage)
     public void sendToServer() {
         Bitmap croppedImage = imgPlant.getCroppedImage();
-        File file = AppUtil.bitmapToFile(this, croppedImage, "plant.png");
+        File selectedImage = AppUtil.bitmapToFile(this, croppedImage, "plant.png");
         // Two line below using for test if image crop convert to file success
         // We will modify to connect API later
-        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+        Log.d("aaaaaaaa" , selectedImage.getAbsolutePath());
+        Bitmap bitmap = BitmapFactory.decodeFile(selectedImage.getAbsolutePath());
         imgPlant.setImageBitmap(bitmap);
+        imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
+        imagePreviewViewModel.getFaceRecognize(selectedImage);
         showActivity(PlantDiseasesDetectActivity.class);
     }
+
+
 
 }

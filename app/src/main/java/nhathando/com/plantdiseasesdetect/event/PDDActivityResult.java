@@ -11,9 +11,5 @@ import retrofit2.http.Part;
 
 public interface PDDActivityResult {
     void onResult();
-    @Multipart
-    @POST("upload")
-    Call<ResponseBody> uploadPhoto(
-            @Part MultipartBody.Part photo
-            );
+
 }
