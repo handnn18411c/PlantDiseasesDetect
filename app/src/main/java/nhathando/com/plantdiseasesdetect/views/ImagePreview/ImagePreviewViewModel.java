@@ -16,6 +16,7 @@ import java.util.List;
 import nhathando.com.plantdiseasesdetect.api.RequestMethod;
 import nhathando.com.plantdiseasesdetect.api.RetrofitObject;
 import nhathando.com.plantdiseasesdetect.models.Face;
+import nhathando.com.plantdiseasesdetect.models.PlantDiseases;
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -27,17 +28,18 @@ import retrofit2.Response;
 public class ImagePreviewViewModel extends AndroidViewModel {
 
     private static final String TAG = ImagePreviewViewModel.class.getSimpleName();
+    private PlantDiseases plantDiseasesData;
 
     public ImagePreviewViewModel(@NonNull @NotNull Application application) {
         super(application);
-
+        plantDiseasesData = new PlantDiseases();
     }
 
     public void getFaceRecognize(File selectedImage) {
         // create multipart
         RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), selectedImage);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", selectedImage.getName(), requestFile);
-        RequestMethod requestMethod = RetrofitObject.getClient(Constant.BASE_URL).create(RequestMethod.class);
+        RequestMethod requestMethod = RetrofitObject.getClient(Constant.TEST_URL).create(RequestMethod.class);
         Call<List<Face>> callback = requestMethod.postFace(body);
 
         callback.enqueue(new Callback<List<Face>>() {
@@ -57,5 +59,28 @@ public class ImagePreviewViewModel extends AndroidViewModel {
 
     }
 
-    
+    public void getPlantDisease(File imageFile) {
+        // create multipart
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), imageFile);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", imageFile.getName(), requestFile);
+        RequestMethod requestMethod = RetrofitObject.getClient(Constant.BASE_URL).create(RequestMethod.class);
+        Call<List<PlantDiseases>> callback = requestMethod.postPlantImage(body);
+
+        callback.enqueue(new Callback<List<PlantDiseases>>() {
+            @Override
+            public void onResponse(Call<List<PlantDiseases>> call, Response<List<PlantDiseases>> response) {
+                List<PlantDiseases> plantDiseasesRespone = response.body();
+                if(plantDiseasesRespone != null) {
+                    plantDiseasesData = plantDiseasesRespone.get(0);
+                    Log.d("PLANTX", plantDiseasesData + "");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PlantDiseases>> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("PLANTXF", t + "");
+            }
+        });
+    }
 }
