@@ -50,6 +50,7 @@ import nhathando.com.plantdiseasesdetect.models.Face;
 import nhathando.com.plantdiseasesdetect.util.AppUtil;
 import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.BaseActivity;
+import nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetect.PlantDiseasesDetectActivity;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -84,7 +85,7 @@ public class ImagePreviewActivity extends BaseActivity {
 
     private void initView() {
         imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
-        Bundle bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
+        bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
         if (bundle != null) {
             Uri uri = bundle.getParcelable(Constant.IMAGE_CAPTURE_URI);
             imgPlant.setImageUriAsync(uri);
@@ -107,7 +108,7 @@ public class ImagePreviewActivity extends BaseActivity {
         imgPlant.setImageBitmap(bitmap);
         imagePreviewViewModel = new ViewModelProvider(this).get(ImagePreviewViewModel.class);
         imagePreviewViewModel.getFaceRecognize(selectedImage);
-
+        showActivity(PlantDiseasesDetectActivity.class);
     }
 
 

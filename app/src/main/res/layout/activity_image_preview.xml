@@ -22,17 +22,16 @@
             android:layout_gravity="center"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-          />
+            app:srcCompat="@drawable/ic_launcher_foreground" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imgPlant"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:srcCompat="@drawable/ic_launcher_background" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imgPlant"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:adjustViewBounds="true"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            app:srcCompat="@drawable/ic_launcher_background" />-->
 
     </LinearLayout>
 
@@ -48,6 +47,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/spacing_large"
+            android:background="@drawable/border_button"
+            android:backgroundTint="@color/sunshade"
             android:text="@string/Back" />
 
         <Button
@@ -57,6 +58,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/spacing_large"
+            android:background="@drawable/border_button"
+            android:backgroundTint="@color/sunshade"
             android:text="@string/UseImage" />
     </RelativeLayout>
 

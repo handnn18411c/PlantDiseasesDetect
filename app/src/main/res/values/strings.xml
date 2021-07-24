@@ -14,4 +14,8 @@
     <string name="ActivityCamera">Camera</string>
     <string name="ActivityImagePreview">ImagePreview</string>
     <string name="ActivityGallery">Gallery</string>
+    <string name="trieuChung">Ban đầu trên phiến lá xuất hiện các điểm màu trắng đục hoặc vàng nhạt có kích thước nhỏ từ 0,2 – 0,5 mm về sau chấm bệnh lớn dần từ 5 – 8 mm. Về sau vết bệnh lớn dần phổ biến có dạng tròn hay bầu dục có lúc liên kết với nhau. Khi bệnh phát triển trên mặt lá thường làm mất màu xanh, mặt dưới lá có dạng bào tử màu vàng hoặc da cam. Tới khi bào tử già vết bệnh phát tán hết thì có màu nâu sẫm có quầng vàng bao quanh gặp điều kiện thời tiết thuận lợi vết bệnh cũ lại tái sinh lặp đi lặp lại khiến vết bệnh ngày càng lan rộng.</string>
+    <string name="phongbenh">Đầu tiên là giống cà phê mít, cà phê chẻ và cà phê vối trong 3 giống này thì cà phê chẻ Arabica nhiễm bệnh rỉ sắt nặng nhất dù chất lượng rất tốt. Trong đó cà phê vối Robusta khi trồng kháng bệnh rỉ sắt rất tốt. Chặt bớt các tán cây che bóng để tạo độ thông thoáng và đốt hết các cành lá cà phê còn thừa của năm trước để tiêu huỷ hết mầm bệnh rỉ sắt.</string>
+    <string name="chamsoc">Phân bón, thuốc hóa học có thể sử dụng:</string>
+    <string name="chamsocDetail">Thuốc gốc đồng đặc trị rỉ sắt, hexaconazole, province F, Shut 677WP…</string>
 </resources>

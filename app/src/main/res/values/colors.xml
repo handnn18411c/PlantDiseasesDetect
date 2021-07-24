@@ -102,4 +102,7 @@
     <color name="icPressed">#AAFFFFFF</color>
 
     <color name="transparent">#00FFFFFF</color>
+
+    <color name="sunshade">#FFA451</color>
+    <color name="lightorange">#FFE3C9</color>
 </resources>

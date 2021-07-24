@@ -3,6 +3,7 @@ package nhathando.com.plantdiseasesdetect.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -24,7 +25,10 @@ public class AppUtil {
             // Get the directory for the app's private pictures directory.
             file = new File(context.getExternalFilesDir(
                     Environment.DIRECTORY_DCIM), fileNameToSave);
-        //    file = new File(Environment.getExternalStorageDirectory() + File.separator + fileNameToSave);
+//             File file2 = new File(Environment.getExternalStorageDirectory().getPath()
+//                    + "/" + fileNameToSave);
+            Log.d("FILEX1", file + "");
+//             Log.d("FILEX2", file2 + "");
             int quality = 0;
             //Convert bitmap to byte array
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
