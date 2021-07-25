@@ -1,6 +1,7 @@
 package nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetect;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import nhathando.com.plantdiseasesdetect.api.RequestMethod;
@@ -47,7 +49,7 @@ public class PlantDiseasesDetectViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<List<PlantDiseases>> call, Response<List<PlantDiseases>> response) {
                 List<PlantDiseases> plantDiseasesRespone = response.body();
-                if(plantDiseasesRespone != null) {
+                if (plantDiseasesRespone != null) {
                     plantDiseasesData.postValue(plantDiseasesRespone.get(0));
 //                    result = plantDiseasesData.getResult().split(" ");
                     Log.d("PLANTX", plantDiseasesData + "");
@@ -62,5 +64,21 @@ public class PlantDiseasesDetectViewModel extends AndroidViewModel {
         });
         Log.d("PLANTXF", plantDiseasesData + "");
         return plantDiseasesData;
+    }
+
+    public String loadJSONFromAsset(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("plant_diseases_db.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

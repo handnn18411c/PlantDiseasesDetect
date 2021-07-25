@@ -1,0 +1,66 @@
+[
+  {
+    "name": "rust",
+    "full_name": "Leaf rust / Hemileia vastatrix",
+    "vn_name": "Bệnh gỉ sắt",
+    "symptom": "Phát bệnh trên lá xuất hiện các điểm màu trắng đục hoặc vàng nhạt có kích thước từ 0,2 - 0,5 mm, sau thời gian lớn dần lên 5 - 8 mm và ngày càng lớn lên có dạng tròn hoặc bầu dục, có lúc liên kết lại với nhau. Khi phát triển, mặt lá thường mất màu xanh, mặt dưới lá có dạng bào tử màu vàng hoặc cam. Khi bào tử già vết bệnh phát tán hết thì có màu nâu sẫm, có quầng vàng bao quanh. Khi điều kiện thời tiết thuận lợi, vết bệnh cũ sẽ tái sinh lặp đi lặp lại khiến bệnh ngày càng lan rộng.",
+
+    "consequence": "Cây bị bệnh sẽ rụng lá hàng loạt làm cây suy kiệt, khô cành, không kết hoa đậu quả được hoặc khi đang mang quả thì bị rụng dẫn tới năng suất và chất lượng kém rõ rệt",
+
+    "solution": "Chặt bớt các tán cây che bóng nhằm tạo độ thông thoáng cho cây. Đốt hết các cành lá cà phê còn thừa nhằm tiêu hủy mầm bệnh.",
+
+    "session_disease": "Vào đầu mùa mưa và phát triển trong suốt mùa mưa.",
+
+    "medicines": "Thuốc gốc đồng đặc trị rỉ sắt, hexaconazole, Triadimefon, Propiconazole, … Liều lượng sử dụng theo khuyến cáo.",
+
+    "note": "Cà phê Arabica rất dễ mắc bệnh này, cà phê Robusta có tỷ lệ mắc bệnh khoảng 50%. Trên từng cây khác có mức độ bị bệnh khác nhau."
+  },
+  {
+    "name": "phoma",
+    "full_name": "Phoma coffeicola",
+    "vn_name": "Bệnh cháy lá",
+    "symptom": "Bệnh phát sinh trên lá, cả lá già và lá non, bắt đầu bằng những đốm nhỏ, sũng nước liên kết lại với nhau tạo thành các mảng nhũn. Sau đó khô dần biến thành màu nâu sáng. Các lá bị bệnh sẽ kết dính lại do sợi nấm mọc lan hoặc hình thành hạch nấm màu nâu, dạng tròn hoặc dẹp nhỏ. Cuối cùng lá bị quăn lại, hay làm khô hết phần ngọn non biến thành màu xám trắng. Bệnh thường tập trung lại thành cụm rồi lây lan ra khắp vườn.",
+
+    "consequence": "Làm rụng lá, tiến đến khô cành, nặng nhất là rụng quả gây hại nặng nề đến năng suất cây trồng trong việc đậu trái, kết hạt.",
+
+    "solution": "Tránh tưới nước khi đất còn ẩm ướt, tán cây phải thoáng, tránh trường hợp làm đọng nước.",
+
+    "session_disease": "Vào lúc thời tiết nắng mưa thất thường, không khí ẩm ướt.",
+
+    "medicines": "Anvil 5SC (0.2%), Tilt super 250 EC (0.1%), Bumper 250EC (0,1%), … Liều dùng theo khuyến cáo.",
+
+    "note": "Bệnh cháy lá thường mắc phải ở cây cà phê nên nông dân hay bỏ qua, nhưng khi lây lan ra diện rộng thì gây thiệt hại rất lớn."
+  },
+  {
+    "name": "miner",
+    "full_name": "Cephonodes hylas / miner",
+    "vn_name": "Bệnh sâu ăn lá",
+    "symptom": "Trứng thường được đẻ từng quả ở mặt dưới lá non gần đỉnh sinh trưởng hoặc đẻ trên chồi ngọn của cây cà phê nở sau 3 ngày. Trứng có hình oval (0.75 x 0.85mm) trơn và rất bóng. Mới đẻ có màu xanh da trời hoặc xanh đậm, dần dần sẽ chuyển sang màu vàng khi sắp nở. Có các vết cắn từ đọt non sau đó lan rộng đến lá bánh tẻ và cả lá già đến mức trơ cành gốc chỉ còn lại quả non.",
+
+    "consequence": "Cây mất dần sức và sinh trưởng kém.",
+
+    "solution": "bắt diệt sâu non, thu bắt nhộng nằm trên mặt đất, hoặc ngắt bỏ lá mà bướm trưởng thành đã đẻ trứng để tiêu diệt. Kết hợp vệ sinh tốt vườn cây để thu gom nhộng để tiêu diệt.",
+
+    "session_disease": "Chúng cắn phá cà phê vào lúc chiều tối hoặc sáng sớm, ban ngày chúng thường ẩn nấp nên rất khó phát hiện.",
+
+    "medicines": "Các loại thuốc FM - Tox 50EC (hoạt chất Alpha – cypermethrin), Sherpa 25EC, Cymkill 10EC (hoạt chất Cypermethrin), ... Liều lượng sử dụng theo khuyến cáo.",
+
+    "note": "Là bệnh mới."
+  },
+  {
+    "name": "cercospora",
+    "full_name": "Cercospora",
+    "vn_name": "Bệnh đốm mắt cua",
+    "symptom": "Cây bị đốm tròn đồng tâm có màu xám và những chấm đen nhỏ quanh viền có màu nâu đỏ bên ngoài cùng có màu vàng, thông thường ở giữa lá, sau lan rộng ra cả lá dẫn đến lá bị khô và thậm chí rụng lá. Ngoài ở lá, bệnh còn phát sinh trên cả quả dẫn đến bị nấm đen từng vùng hoặc hết cả quả.",
+
+    "consequence": "Nhanh chóng bị rụng lá toàn cây lan ra toàn vườn. Ảnh hưởng đến sự sinh trưởng và phát triển của cây dẫn đến ảnh hưởng về năng suất.",
+
+    "solution": "Hàng năm phải tỉa, tạo tán thông thoáng cho cây. Vườn phải thoát nước tốt, tránh nơi đọng nước, nhất là trong mùa mưa.",
+
+    "session_disease": "Quanh năm nhất là giai đoạn vườn ươm và kiến thiết cơ bản.",
+
+    "medicines": "Thuốc bảo vệ thực vật Anvil 5SC (0.2%), Tilt 250 EC (0.1%), Bumper 250EC (0,1%), ... Liều dùng theo khuyến cáo.",
+
+    "note": "Những cây thiếu nước, không được chăm sóc và tỉa cành thường xuyên, đất cằn cỗi thiếu dinh dưỡng và thiếu phân nấm sẽ bùng phát rất nhanh. Phổ biến trên cà phê Arabica."
+  }
+]

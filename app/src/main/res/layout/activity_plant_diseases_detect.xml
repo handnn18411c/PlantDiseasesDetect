@@ -83,7 +83,7 @@
                     android:backgroundTint="@color/lightorange"
                     android:gravity="center"
                     android:padding="@dimen/spacing_medium"
-                    android:text="BỆNH RỆP SÁP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="30dp" />
 
@@ -108,7 +108,7 @@
                     android:backgroundTint="@color/lightorange"
                     android:gravity="center"
                     android:padding="@dimen/spacing_small"
-                    android:text="85%"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="30dp" />
 

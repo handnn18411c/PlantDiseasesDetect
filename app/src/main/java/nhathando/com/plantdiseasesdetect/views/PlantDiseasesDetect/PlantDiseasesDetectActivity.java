@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import nhathando.com.plantdiseasesdetect.R;
 import nhathando.com.plantdiseasesdetect.models.PlantDiseases;
 import nhathando.com.plantdiseasesdetect.util.AppUtil;
@@ -29,12 +31,14 @@ import nhathando.com.plantdiseasesdetect.util.Constant;
 import nhathando.com.plantdiseasesdetect.views.BaseActivity;
 import nhathando.com.plantdiseasesdetect.views.HomeActivity;
 import nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetail.PlantDiseaseDetailActivity;
+import nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetail.PlantDiseasesDetailViewModel;
 
 public class PlantDiseasesDetectActivity extends BaseActivity {
 
     private PlantDiseasesDetectViewModel plantDiseasesDetectViewModel;
     private Bundle bundle;
-    private PlantDiseases plantDiseases;
+    private String name;
+    private String rate;
     private SVProgressHUD svProgressHUD;
     private String[] result;
 
@@ -59,48 +63,66 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
         plantDiseasesDetectViewModel = new ViewModelProvider(this).get(PlantDiseasesDetectViewModel.class);
         svProgressHUD = new SVProgressHUD(this);
         bundle = getIntent().getBundleExtra(Constant.KEY_EXTRA);
-        if(bundle != null) {
+        if (bundle != null) {
             Bitmap croppedImage = bundle.getParcelable(Constant.IMAGE_BITMAP);
             imgBounding.setImageBitmap(croppedImage);
             File selectedImage = AppUtil.bitmapToFile(this, croppedImage, "plant.png");
             showProgress("Please wait");
             plantDiseasesDetectViewModel.getPlantDisease(selectedImage).observe(this, model -> {
-                if(model != null) {
+                if (model != null) {
                     String data = model.getResult();
                     JSONArray jsonArr = null;
                     try {
                         jsonArr = new JSONArray(data);
-
-                        tvTenBenh.setText(jsonArr.getJSONObject(0).get("name") + "");
-                        String rate = jsonArr.getJSONObject(0).get("conf") + "";
+                        float rateDetect = 0f;
+                        if (jsonArr.length() != 0) {
+                            name = jsonArr.getJSONObject(jsonArr.length() - 1).get("name") + "";
+                            rate = jsonArr.getJSONObject(jsonArr.length() - 1).get("conf") + "";
+                        } else {
+                            name = jsonArr.getJSONObject(0).get("name") + "";
+                        }
                         rate = rate.substring(7, rate.length() - 1);
-                        float rateDetect = Float.parseFloat(rate)*100;
+                        rateDetect = Float.parseFloat(rate) * 100;
                         tvDoChinhXac.setText(Math.round(rateDetect) + "%");
+                        String disease_info = plantDiseasesDetectViewModel.loadJSONFromAsset(this);
+                        setDiseasesInfo(disease_info, name);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 }
             });
-            Log.d("PLANTX", plantDiseases + "");
             hideProgress();
         }
     }
 
-    private void mapDataToView(PlantDiseases diseases){
-        tvTenBenh.setText(diseases.getResult());
-//        String data = plantDiseases.getResult();
-//        JSONArray jsonArr = null;
-//        try {
-//            jsonArr = new JSONArray(data);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        Log.d("PLANTXXX", jsonArr + "");
+    private void setDiseasesInfo(String disease_info, String disease_name) {
+        try {
+            JSONArray jsonArr = new JSONArray(disease_info);
+            for (int i = 0; i < jsonArr.length(); i++) {
+                JSONObject jsonObject = jsonArr.getJSONObject(i);
+                String name = jsonObject.get("name") + "";
+                if (name.equalsIgnoreCase(disease_name)) {
+                    String vnName = jsonObject.get("vn_name") + "";
+                    tvTenBenh.setText(vnName);
+                    String fullName = jsonObject.getString("full_name") + "";
+                    String symptom = jsonObject.get("symptom") + "";
+                    String solution = jsonObject.get("solution") + "";
+                    String medicine = jsonObject.get("medicines") + "";
+                    bundle.putString(Constant.PLANT_DISEASE_SCIENCE_NAME, fullName);
+                    bundle.putString(Constant.PLANT_DISEASE_SYMPTOM, symptom);
+                    bundle.putString(Constant.PLANT_DISEASE_SOLUTION, solution);
+                    bundle.putString(Constant.PLANT_DISEASE_MEDICINES, medicine);
+                    break;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void switchActivity(View view) {
-        Intent intent= new Intent(PlantDiseasesDetectActivity.this, PlantDiseaseDetailActivity.class);
+        Intent intent = new Intent(PlantDiseasesDetectActivity.this, PlantDiseaseDetailActivity.class);
         startActivity(intent);
     }
 
@@ -123,5 +145,10 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
             svProgressHUD.dismiss();
             svProgressHUD.dismissImmediately();
         }
+    }
+
+    @OnClick(R.id.btnThongtinbenh)
+    public void diseaseInfo() {
+        showActivity(PlantDiseaseDetailActivity.class, bundle);
     }
 }

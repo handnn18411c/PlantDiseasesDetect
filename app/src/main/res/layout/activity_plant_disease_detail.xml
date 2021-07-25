@@ -42,16 +42,15 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtTrieuchung"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTrieuChung"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|end"
                 android:layout_marginHorizontal="@dimen/spacing_large"
                 android:layout_marginVertical="@dimen/spacing_large"
                 android:background="@drawable/border_edittext"
                 android:backgroundTint="@color/lightorange"
                 android:padding="@dimen/spacing_medium"
-                android:text="@string/trieuChung"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="24sp" />
             <!-- Phòng bệnh -->
@@ -66,8 +65,8 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtPhongbenh"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvPhongBenh"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginHorizontal="@dimen/spacing_large"
@@ -75,7 +74,7 @@
                 android:background="@drawable/border_edittext"
                 android:backgroundTint="@color/lightorange"
                 android:padding="@dimen/spacing_medium"
-                android:text="@string/phongbenh"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -90,8 +89,8 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtPhanthuoc"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvPhanthuoc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginHorizontal="@dimen/spacing_large"
@@ -99,7 +98,7 @@
                 android:background="@drawable/border_edittext"
                 android:backgroundTint="@color/lightorange"
                 android:padding="@dimen/spacing_medium"
-                android:text="@string/chamsocDetail"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="24sp" />
             <!-- Button -->
@@ -111,7 +110,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnCaptureAgain"
+                    android:id="@+id/btnReturn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -119,7 +118,7 @@
                     android:background="@drawable/border_button"
                     android:backgroundTint="@color/sunshade"
                     android:padding="@dimen/spacing_small"
-                    android:text="Tiếp tục chụp"
+                    android:text="Trở lại"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
