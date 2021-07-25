@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/imgCheck"
                     android:layout_width="@dimen/icon_size_h3"
                     android:layout_height="@dimen/icon_size_h3"
                     android:layout_gravity="center"
@@ -54,6 +55,7 @@
                     android:background="@drawable/circle_background"
                     android:src="@drawable/ic_baseline_check_24" />
                 <TextView
+                    android:id="@+id/tvXacDinh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

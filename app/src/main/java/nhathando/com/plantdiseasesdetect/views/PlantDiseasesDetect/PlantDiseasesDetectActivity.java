@@ -3,6 +3,7 @@ package nhathando.com.plantdiseasesdetect.views.PlantDiseasesDetect;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,14 +41,20 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
     private String name;
     private String rate;
     private SVProgressHUD svProgressHUD;
-    private String[] result;
+    private boolean isDetect;
 
     @BindView(R.id.imgBounding)
     ImageView imgBounding;
+    @BindView(R.id.imgCheck)
+    ImageView imgCheck;
     @BindView(R.id.tvTenBenh)
     TextView tvTenBenh;
     @BindView(R.id.tvDoChinhXac)
     TextView tvDoChinhXac;
+    @BindView(R.id.tvXacDinh)
+    TextView tvXacDinh;
+    @BindView(R.id.btnThongtinbenh)
+    Button btnThongtinbenh;
 
     @Override
     protected int getLayoutId() {
@@ -74,6 +81,16 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
                     JSONArray jsonArr = null;
                     try {
                         jsonArr = new JSONArray(data);
+                        if(jsonArr.length()==0) {
+                            isDetect = false;
+                            tvXacDinh.setText("Không nhận diện được");
+                            btnThongtinbenh.setText("Trở lại");
+                            imgCheck.setImageResource(R.drawable.ic_baseline_close_24);
+                        } else {
+                            isDetect = true;
+                            tvXacDinh.setText("Đã nhận diện");
+                            imgCheck.setImageResource(R.drawable.ic_baseline_check_24);
+                        }
                         float rateDetect = 0f;
                         if (jsonArr.length() != 0) {
                             name = jsonArr.getJSONObject(jsonArr.length() - 1).get("name") + "";
@@ -90,6 +107,9 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
                         e.printStackTrace();
                     }
 
+                } else {
+                    tvXacDinh.setText("Không nhận diện được");
+                    imgCheck.setImageResource(R.drawable.ic_baseline_close_24);
                 }
             });
             hideProgress();
@@ -97,27 +117,32 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
     }
 
     private void setDiseasesInfo(String disease_info, String disease_name) {
-        try {
-            JSONArray jsonArr = new JSONArray(disease_info);
-            for (int i = 0; i < jsonArr.length(); i++) {
-                JSONObject jsonObject = jsonArr.getJSONObject(i);
-                String name = jsonObject.get("name") + "";
-                if (name.equalsIgnoreCase(disease_name)) {
-                    String vnName = jsonObject.get("vn_name") + "";
-                    tvTenBenh.setText(vnName);
-                    String fullName = jsonObject.getString("full_name") + "";
-                    String symptom = jsonObject.get("symptom") + "";
-                    String solution = jsonObject.get("solution") + "";
-                    String medicine = jsonObject.get("medicines") + "";
-                    bundle.putString(Constant.PLANT_DISEASE_SCIENCE_NAME, fullName);
-                    bundle.putString(Constant.PLANT_DISEASE_SYMPTOM, symptom);
-                    bundle.putString(Constant.PLANT_DISEASE_SOLUTION, solution);
-                    bundle.putString(Constant.PLANT_DISEASE_MEDICINES, medicine);
-                    break;
+        if(disease_info != null) {
+            try {
+                JSONArray jsonArr = new JSONArray(disease_info);
+                for (int i = 0; i < jsonArr.length(); i++) {
+                    JSONObject jsonObject = jsonArr.getJSONObject(i);
+                    String name = jsonObject.get("name") + "";
+                    if (name.equalsIgnoreCase(disease_name)) {
+                        String vnName = jsonObject.get("vn_name") + "";
+                        tvTenBenh.setText(vnName);
+                        String fullName = jsonObject.getString("full_name") + "";
+                        String symptom = jsonObject.get("symptom") + "";
+                        String solution = jsonObject.get("solution") + "";
+                        String medicine = jsonObject.get("medicines") + "";
+                        bundle.putString(Constant.PLANT_DISEASE_SCIENCE_NAME, fullName);
+                        bundle.putString(Constant.PLANT_DISEASE_SYMPTOM, symptom);
+                        bundle.putString(Constant.PLANT_DISEASE_SOLUTION, solution);
+                        bundle.putString(Constant.PLANT_DISEASE_MEDICINES, medicine);
+                        break;
+                    }
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            tvXacDinh.setText("Không nhận diện được");
+            imgCheck.setImageResource(R.drawable.ic_baseline_close_24);
         }
     }
 
@@ -149,6 +174,10 @@ public class PlantDiseasesDetectActivity extends BaseActivity {
 
     @OnClick(R.id.btnThongtinbenh)
     public void diseaseInfo() {
-        showActivity(PlantDiseaseDetailActivity.class, bundle);
+        if(isDetect) {
+            showActivity(PlantDiseaseDetailActivity.class, bundle);
+        } else {
+            showActivity(HomeActivity.class);
+        }
     }
 }

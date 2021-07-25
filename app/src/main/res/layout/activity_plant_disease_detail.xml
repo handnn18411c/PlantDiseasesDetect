@@ -106,15 +106,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/spacing_large"
-                android:gravity="center"
+                android:layout_weight="10"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnReturn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/icon_size_h5"
+                    android:layout_weight="5"
                     android:background="@drawable/border_button"
                     android:backgroundTint="@color/sunshade"
                     android:padding="@dimen/spacing_small"
@@ -124,9 +124,10 @@
 
                 <Button
                     android:id="@+id/btnQuit"
-                    android:layout_width="119dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/icon_size_h5"
+                    android:layout_weight="5"
                     android:background="@drawable/border_button"
                     android:backgroundTint="@color/sunshade"
                     android:onClick="switchActivity"
